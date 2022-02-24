@@ -1,0 +1,14 @@
+//
+// Created by Xinpeng Liu on 2/23/22.
+//
+
+#ifndef DOUBLYLINKEDLIST_DLISTITERATOR_H
+#define DOUBLYLINKEDLIST_DLISTITERATOR_H
+
+
+class DListIterator {
+
+};
+
+
+#endif //DOUBLYLINKEDLIST_DLISTITERATOR_H
