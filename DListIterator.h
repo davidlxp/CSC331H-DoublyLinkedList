@@ -49,6 +49,11 @@ public:
     DListIterator<T>& prev();
 
     /**
+     * @Brief print "info" from node which this iterator currently at
+     */
+    void printItem();
+
+    /**
      * @Brief get "info" from node which this iterator currently at
      */
     T operator*();

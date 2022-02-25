@@ -57,6 +57,14 @@ DListIterator<T>& DListIterator<T>::prev(){
 }
 
 template <class T>
+void DListIterator<T>::printItem(){
+    if(operator*() != NULL)
+        cout << operator*() << endl;
+    else
+        cout << "Nothing to print, the list is empty.\n" << endl;
+}
+
+template <class T>
 T DListIterator<T>::operator*(){
     if(current != nullptr)
         return current->info;

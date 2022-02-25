@@ -181,10 +181,7 @@ void runIterator(DListIterator<int>& iterator){
                 iterator.prev();
                 break;
             case 3:
-                if(*iterator != NULL)
-                    cout << *iterator << endl;
-                else
-                    cout << "Nothing to print, the list is empty.\n" << endl;
+                iterator.printItem();
                 break;
         }
         choice = iterateMenu();
