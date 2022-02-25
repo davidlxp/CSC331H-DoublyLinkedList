@@ -1,21 +1,16 @@
-#ifndef DOUBLYLINKEDLIST_DLIST_H
-#define DOUBLYLINKEDLIST_DLIST_H
-
-#include <iostream>
-using namespace std;
-
 /***************************************************************/
 /* Programmer: Xinpeng Liu                                     */
 /* Date: February 22, 2022                                     */
 /* Purpose:  doubly linked list class                          */
 /***************************************************************/
 
-template <class T>
-struct node {
-    T info;
-    node<T>* next;
-    node<T>* prev;
-};
+#ifndef DOUBLYLINKEDLIST_DLIST_H
+#define DOUBLYLINKEDLIST_DLIST_H
+
+#include <iostream>
+#include "node.h"
+#include "DListIterator.cpp"
+using namespace std;
 
 template <class T>
 class DList {
@@ -37,6 +32,8 @@ public:
     void printList();
     void destroy();                                     // Destroy the whole list
     void copy(const DList<T>& other);
+    DListIterator<T> begin();                           // Return an Iterator points to the start of the list
+    DListIterator<T> end();                             // Return an Iterator points to the end of the list
 };
 
 

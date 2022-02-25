@@ -3,4 +3,4 @@ project(DoublyLinkedList)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(DoublyLinkedList main.cpp DList.cpp DList.h DListIterator.cpp DListIterator.h)
+add_executable(DoublyLinkedList main.cpp DList.cpp DList.h DListIterator.cpp DListIterator.h node.h)

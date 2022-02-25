@@ -201,7 +201,7 @@ void DList<T>::deleteItem(T item) {
      * */
 
     if(first == nullptr)                            // 1. list is empty
-        cout << "The list is empty." << endl;
+        cout << "The list is empty.\n" << endl;
     else
     {
         node<T>* p = nullptr;                       // "p" ptr is for walking
@@ -209,7 +209,7 @@ void DList<T>::deleteItem(T item) {
 
         if(first->next == nullptr){                 // when there's only 1 node in the list
             if(first->info != item)
-                cout << "Item not found." << endl;
+                cout << "Item not found.\n" << endl;
             else {                                  // 2. deleting the only node
                 delete first;
                 length--;
@@ -259,8 +259,20 @@ void DList<T>::deleteItem(T item) {
                     q = nullptr;
                 }
                 else
-                    cout << "Item not found." << endl;
+                    cout << "Item not found.\n" << endl;
             }
         }
     }
+}
+
+template <class T>
+DListIterator<T> DList<T>::begin() {
+    DListIterator<T> iterator(first);
+    return iterator;
+}
+
+template <class T>
+DListIterator<T> DList<T>::end() {
+    DListIterator<T> iterator(last);
+    return iterator;
 }
