@@ -23,17 +23,63 @@ public:
     ~DList();                                          // Destructor
     DList(const DList<T>& other);                      // Copy Constructor
     const DList<T>& operator=(const DList<T>& other);  // Overloading Operator "="
+
+    /**
+     * @Brief check whether the list is empty
+     */
     bool isEmpty();
+
+    /**
+     * @Brief delete one item from the list
+     * if an item has multiple appearances in the list
+     * we only delete the first one
+     */
     void deleteItem(T);
+
+    /**
+     * @Brief check whether an item is in the list
+     */
     bool searchItem(T);
+
+    /**
+     * @Brief get how many items in a list
+     */
     int getLength();
-    void insertFront(T);                                // Insert to the front of the double linkedList
-    void insertBack(T);                                 // Insert to the back of the double linkedList
+
+    /**
+     * @Brief insert to the front of the double linkedList
+     */
+    void insertFront(T);
+
+    /**
+     * @Brief insert to the back of the double linkedList
+     */
+    void insertBack(T);
+
+    /**
+     * @Brief print a doubly linkedList from front to back
+     */
     void printList();
-    void destroy();                                     // Destroy the whole list
+
+    /**
+     * @Brief destroy all the nodes in a doubly linkedList
+     */
+    void destroy();
+
+    /**
+     * @Brief make a copy of an list
+     */
     void copy(const DList<T>& other);
-    DListIterator<T> begin();                           // Return an Iterator points to the start of the list
-    DListIterator<T> end();                             // Return an Iterator points to the end of the list
+
+    /**
+     * @Brief return an Iterator points to the 1st node of the list
+     */
+    DListIterator<T> begin();
+
+    /**
+     * @Brief return an Iterator points to the last node of the list
+     */
+    DListIterator<T> end();
 };
 
 
