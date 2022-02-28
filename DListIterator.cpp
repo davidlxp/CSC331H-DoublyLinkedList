@@ -19,9 +19,7 @@ DListIterator<T>::DListIterator(node<T>* ptr){
 template <class T>
 bool DListIterator<T>::hasNext() {
     bool res = true;
-    if(current == nullptr)
-        res = false;
-    else if (current->next == nullptr)
+    if(current == nullptr || current->next == nullptr)
         res = false;
     return res;
 }
@@ -29,9 +27,7 @@ bool DListIterator<T>::hasNext() {
 template <class T>
 bool DListIterator<T>::hasPrev() {
     bool res = true;
-    if(current == nullptr)
-        res = false;
-    else if(current->prev == nullptr)
+    if(current == nullptr || current->prev == nullptr)
         res = false;
     return res;
 }
