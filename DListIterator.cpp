@@ -39,27 +39,31 @@ bool DListIterator<T>::hasPrev() {
 template <class T>
 DListIterator<T>& DListIterator<T>::next(){
     if(hasNext()) {
+        cout << "Moved to next!" << endl;
         current = current->next;
     }
     else
-        cout << "Cannot increment, list is empty or iterator has reached the end of the list\n" << endl;
+        cout << "Can NOT move to next, list is empty or iterator has reached the end of the list\n" << endl;
     return *this;
 }
 
 template <class T>
 DListIterator<T>& DListIterator<T>::prev(){
     if(hasPrev()) {
+        cout << "Moved to previous!" << endl;
         current = current->prev;
     }
     else
-        cout << "Cannot decrement, list is empty or iterator has reached the begin of the list\n" << endl;
+        cout << "Can NOT move to previous, list is empty or iterator has reached the begin of the list\n" << endl;
     return *this;
 }
 
 template <class T>
 void DListIterator<T>::printItem(){
     if(operator*() != NULL)
-        cout << operator*() << endl;
+
+        cout << "Item: "
+            << operator*() << endl;
     else
         cout << "Nothing to print, the list is empty.\n" << endl;
 }

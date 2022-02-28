@@ -12,6 +12,20 @@ void runIterator(DListIterator<int>& iterator);
 
 int main() {
     runProgram();
+
+//    DList<int> l;
+//    l.insertFront(5);
+//    l.insertFront(6);
+//    l.insertFront(8);
+//    l.printList();
+//    cout << endl;
+//
+//    DListIterator<int> iterator = l.begin();
+//    (iterator++).next();
+//    iterator.printItem();
+
+
+
     return 0;
 }
 
@@ -111,8 +125,13 @@ void insertListFront ( DList<int> &l )
 
     cout<<"\nEnter the number to insert : ";
     cin>>num;
-    l.insertFront(num);
-    cout<<"\nThe number has been inserted\n\n";
+
+    if(num) {
+        l.insertFront(num);
+        cout << "\nThe number has been inserted\n\n";
+    }
+    else
+        cout << "\nFailed! Please provide a valid Integer to insert\n\n";
 }
 
 void insertListBack ( DList<int> &l )
@@ -121,8 +140,13 @@ void insertListBack ( DList<int> &l )
 
     cout<<"\nEnter the number to insert : ";
     cin>>num;
-    l.insertBack(num);
-    cout<<"\nThe number has been inserted\n\n";
+
+    if(num) {
+        l.insertBack(num);
+        cout << "\nThe number has been inserted\n\n";
+    }
+    else
+        cout << "\nFailed! Please provide a valid Integer to insert\n\n";
 }
 
 void deleteListItem ( DList<int> &l )

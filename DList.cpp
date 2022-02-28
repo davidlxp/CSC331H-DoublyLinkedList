@@ -59,7 +59,7 @@ void DList<T>::destroy() {
 
     if(first != nullptr){
         node<T>* p = nullptr;
-        while(first->next != nullptr){              // when there at more than 1 nodes
+        while(first->next != nullptr){              // when there is more than 1 nodes
             p = first;
             first = first->next;                    // ptr "first" moves to the next node
             p->next = nullptr;                      // remove the access from prev node to current node
@@ -79,6 +79,7 @@ void DList<T>::printList() {
     if(first == nullptr)
         cout << "\nNothing to print, the list is empty.\n" << endl;
     else{
+        cout << "\n" << "The List:" << endl;
         node<T>* p = first;
         while(p != nullptr){
             cout << p->info << " ";
