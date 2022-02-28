@@ -156,7 +156,8 @@ void deleteListItem ( DList<int> &l )
     cout<<"\nEnter the number to delete : ";
     cin>>num;
 
-    if ( l.searchItem (num))
+    bool itemExist = l.searchItem (num);
+    if ( itemExist )
     {
         l.deleteItem (num);
         cout<<"\nThe number has been deleted\n\n";
