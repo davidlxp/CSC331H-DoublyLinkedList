@@ -60,8 +60,7 @@ DListIterator<T>& DListIterator<T>::prev(){
 
 template <class T>
 void DListIterator<T>::printItem(){
-    if(operator*() != NULL)
-
+    if(current != nullptr)
         cout << "Item: "
             << operator*() << endl;
     else
@@ -72,8 +71,6 @@ template <class T>
 T DListIterator<T>::operator*(){
     if(current != nullptr)
         return current->info;
-    else
-        return NULL;
 }
 
 template <class T>
