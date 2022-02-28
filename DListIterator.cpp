@@ -62,7 +62,7 @@ template <class T>
 void DListIterator<T>::printItem(){
     if(current != nullptr)
         cout << "Item: "
-            << operator*() << endl;
+            << current->info << endl;
     else
         cout << "Nothing to print, the list is empty.\n" << endl;
 }
