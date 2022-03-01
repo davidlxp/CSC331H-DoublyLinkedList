@@ -7,17 +7,20 @@
 #include "DListIterator.h"
 
 template <class T>
-DListIterator<T>::DListIterator(){
+DListIterator<T>::DListIterator()
+{
     current = nullptr;
 }
 
 template <class T>
-DListIterator<T>::DListIterator(node<T>* ptr){
+DListIterator<T>::DListIterator(node<T>* ptr)
+{
     current = ptr;
 }
 
 template <class T>
-bool DListIterator<T>::hasNext() {
+bool DListIterator<T>::hasNext()
+{
     bool res = true;
     if(current == nullptr || current->next == nullptr)
         res = false;
@@ -25,7 +28,8 @@ bool DListIterator<T>::hasNext() {
 }
 
 template <class T>
-bool DListIterator<T>::hasPrev() {
+bool DListIterator<T>::hasPrev()
+{
     bool res = true;
     if(current == nullptr || current->prev == nullptr)
         res = false;
@@ -33,8 +37,10 @@ bool DListIterator<T>::hasPrev() {
 }
 
 template <class T>
-DListIterator<T>& DListIterator<T>::next(){
-    if(hasNext()) {
+DListIterator<T>& DListIterator<T>::next()
+{
+    if(hasNext())
+    {
         cout << "Moved to next!" << endl;
         current = current->next;
     }
@@ -44,7 +50,8 @@ DListIterator<T>& DListIterator<T>::next(){
 }
 
 template <class T>
-DListIterator<T>& DListIterator<T>::prev(){
+DListIterator<T>& DListIterator<T>::prev()
+{
     if(hasPrev()) {
         cout << "Moved to previous!" << endl;
         current = current->prev;
@@ -55,7 +62,8 @@ DListIterator<T>& DListIterator<T>::prev(){
 }
 
 template <class T>
-void DListIterator<T>::printItem(){
+void DListIterator<T>::printItem()
+{
     if(current != nullptr)
         cout << "Item: "
             << current->info << endl;
@@ -64,41 +72,48 @@ void DListIterator<T>::printItem(){
 }
 
 template <class T>
-T DListIterator<T>::operator*(){
+T DListIterator<T>::operator*()
+{
     if(current != nullptr)
         return current->info;
 }
 
 template <class T>
-DListIterator<T>& DListIterator<T>::operator++(){
+DListIterator<T>& DListIterator<T>::operator++()
+{
     return next();
 }
 
 template <class T>
-DListIterator<T>& DListIterator<T>::operator++(int){
+DListIterator<T>& DListIterator<T>::operator++(int)
+{
     DListIterator<T> temp = *this;
     ++(*this);
     return temp;
 }
 
 template <class T>
-DListIterator<T> DListIterator<T>::operator--(){
+DListIterator<T> DListIterator<T>::operator--()
+{
     return prev();
 }
 
 template <class T>
-DListIterator<T>& DListIterator<T>::operator--(int){
+DListIterator<T>& DListIterator<T>::operator--(int)
+{
     DListIterator<T> temp = *this;
     --(*this);
     return temp;
 }
 
 template <class T>
-const bool DListIterator<T>::operator==(const DListIterator<T>& other) {
+const bool DListIterator<T>::operator==(const DListIterator<T>& other)
+{
     return current == other.current;
 }
 
 template <class T>
-const bool DListIterator<T>::operator!=(const DListIterator<T>& other){
+const bool DListIterator<T>::operator!=(const DListIterator<T>& other)
+{
     return !(*this == other);
 }

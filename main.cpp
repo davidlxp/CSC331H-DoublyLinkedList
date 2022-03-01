@@ -10,26 +10,14 @@ void searchListItem ( DList<int> l );
 
 void runIterator(DListIterator<int>& iterator);
 
-int main() {
+int main()
+{
     runProgram();
-
-//    DList<int> l;
-//    l.insertFront(5);
-//    l.insertFront(6);
-//    l.insertFront(8);
-//    l.printList();
-//    cout << endl;
-//
-//    DListIterator<int> iterator = l.begin();
-//    (iterator++).next();
-//    iterator.printItem();
-
-
-
     return 0;
 }
 
-void runProgram(){
+void runProgram()
+{
 
     DList<int> l;
     int choice;
@@ -69,13 +57,15 @@ void runProgram(){
                     << l.getLength() << " items\n\n";
                 break;
 
-            case 7: {
+            case 7:
+            {
                 DListIterator<int> iteratorF = l.begin();
                 runIterator(iteratorF);
                 break;
             }
 
-            case 8: {
+            case 8:
+            {
                 DListIterator<int> iteratorB = l.end();
                 runIterator(iteratorB);
                 break;
@@ -126,7 +116,8 @@ void insertListFront ( DList<int> &l )
     cout<<"\nEnter the number to insert : ";
     cin>>num;
 
-    if(num) {
+    if(num)
+    {
         l.insertFront(num);
         cout << "\nThe number has been inserted\n\n";
     }
@@ -141,7 +132,8 @@ void insertListBack ( DList<int> &l )
     cout<<"\nEnter the number to insert : ";
     cin>>num;
 
-    if(num) {
+    if(num)
+    {
         l.insertBack(num);
         cout << "\nThe number has been inserted\n\n";
     }

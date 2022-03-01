@@ -15,23 +15,27 @@ DList<T>::DList()
 }
 
 template <class T>
-DList<T>::~DList() {
+DList<T>::~DList()
+{
     destroy();
 }
 
 template <class T>
-DList<T>::DList(const DList<T>& other){
+DList<T>::DList(const DList<T>& other)
+{
     copy(other);
 }
 
 template <class T>
-const DList<T>& DList<T>::operator=(const DList<T>& other){
+const DList<T>& DList<T>::operator=(const DList<T>& other)
+{
 
     /**
      * @Brief passing by reference, means "other" is an object.
      * so we need to use "&other" to get its address
      */
-    if(this != &other){                             // avoid self-copy
+    if(this != &other)                              // avoid self-copy
+    {
         destroy();
         copy(other);
     }
@@ -44,12 +48,14 @@ const DList<T>& DList<T>::operator=(const DList<T>& other){
 }
 
 template<class T>
-bool DList<T>::isEmpty() {
+bool DList<T>::isEmpty()
+{
     return first == nullptr;
 }
 
 template <class T>
-void DList<T>::destroy() {
+void DList<T>::destroy()
+{
     /**
      * @CasesToConsider
      * 1. empty list
@@ -57,9 +63,11 @@ void DList<T>::destroy() {
      * 3. normal walk and destroy
      * */
 
-    if(first != nullptr){
+    if(first != nullptr)
+    {
         node<T>* p = nullptr;
-        while(first->next != nullptr){              // when there is more than 1 nodes
+        while(first->next != nullptr)               // when there is more than 1 nodes
+        {
             p = first;
             first = first->next;                    // ptr "first" moves to the next node
             p->next = nullptr;                      // remove the access from prev node to current node
@@ -75,13 +83,16 @@ void DList<T>::destroy() {
 }
 
 template <class T>
-void DList<T>::printList() {
+void DList<T>::printList()
+{
     if(first == nullptr)
         cout << "\nNothing to print, the list is empty.\n" << endl;
-    else{
+    else
+    {
         cout << "\n" << "The List:" << endl;
         node<T>* p = first;
-        while(p != nullptr){
+        while(p != nullptr)
+        {
             cout << p->info << " ";
             p = p->next;
         }
@@ -90,12 +101,15 @@ void DList<T>::printList() {
 }
 
 template <class T>
-bool DList<T>::searchItem(T item) {
+bool DList<T>::searchItem(T item)
+{
     if(first == nullptr)
         cout << "\nList is empty.\n" << endl;
-    else{
+    else
+    {
         node<T>* p = first;
-        while(p != nullptr){                        // unsorted list -> thus, no "p->info <= item" needed
+        while(p != nullptr)                         // unsorted list -> thus, no "p->info <= item" needed
+        {
             if(p->info == item)
                 return true;
             p = p->next;
@@ -105,12 +119,14 @@ bool DList<T>::searchItem(T item) {
 }
 
 template <class T>
-int DList<T>::getLength() {
+int DList<T>::getLength()
+{
     return length;
 }
 
 template <class T>
-void DList<T>::copy(const DList<T>& other){
+void DList<T>::copy(const DList<T>& other)
+{
     /**
      * @CasesToConsider
      * 1. "other" is empty
@@ -119,10 +135,12 @@ void DList<T>::copy(const DList<T>& other){
 
     length = other.length;                          // copy the length
 
-    if(other.first == nullptr){                     // if the "other" list is empty
+    if(other.first == nullptr)                     // if the "other" list is empty
+    {
         first = nullptr;
     }
-    else{
+    else
+    {
         first = new node<T>;
         first->prev = nullptr;
         first->next = nullptr;
@@ -130,7 +148,8 @@ void DList<T>::copy(const DList<T>& other){
 
         node<T> *p = other.first->next;
         node<T> *q = first;
-        while (p != nullptr) {
+        while (p != nullptr)
+        {
             q->next = new node<T>;                  // create the next node
 
             q->next->info = p->info;                // copy "info" to the next node
@@ -147,7 +166,8 @@ void DList<T>::copy(const DList<T>& other){
 }
 
 template <class T>
-void DList<T>::insertFront(T item) {
+void DList<T>::insertFront(T item)
+{
     /**
      * @CasesToConsider
      * 1. list is empty
@@ -172,7 +192,8 @@ void DList<T>::insertFront(T item) {
 }
 
 template <class T>
-void DList<T>::insertBack(T item) {
+void DList<T>::insertBack(T item)
+{
     node<T>* p = last;
 
     last = new node<T>;
@@ -190,7 +211,8 @@ void DList<T>::insertBack(T item) {
 }
 
 template <class T>
-void DList<T>::deleteItem(T item) {
+void DList<T>::deleteItem(T item)
+{
     /**
      * @CasesToConsider
      * 1. list is empty
@@ -208,10 +230,12 @@ void DList<T>::deleteItem(T item) {
         node<T>* p = nullptr;                       // "p" ptr is for walking
         node<T>* q = nullptr;                       // "q" ptr takes care of deleting
 
-        if(first->next == nullptr){                 // when there's only 1 node in the list
+        if(first->next == nullptr)                  // when there's only 1 node in the list
+        {
             if(first->info != item)
                 cout << "Item not found.\n" << endl;
-            else {                                  // 2. deleting the only node
+            else                                    // 2. deleting the only node
+            {
                 delete first;
                 length--;
 
@@ -219,8 +243,10 @@ void DList<T>::deleteItem(T item) {
                 last = nullptr;
             }
         }
-        else {                                      // when list contains multiple nodes
-            if(first->info == item){                // 3. deleting the 1st node
+        else                                        // when list contains multiple nodes
+        {
+            if(first->info == item)                 // 3. deleting the 1st node
+            {
                 p = first;
                 first = first->next;
                 first->prev = nullptr;
@@ -230,7 +256,8 @@ void DList<T>::deleteItem(T item) {
 
                 p = nullptr;
             }
-            else if(last->info == item){            // 4. deleting the last node
+            else if(last->info == item)             // 4. deleting the last node
+            {
                 p = last;
                 last = last->prev;
                 last->next = nullptr;
@@ -240,14 +267,17 @@ void DList<T>::deleteItem(T item) {
 
                 p = nullptr;
             }
-            else {                                  // 5. walk to find the node to delete
+            else                                    // 5. walk to find the node to delete
+            {
                 p = first->next;
                 q = first;
-                while(p != last && p->info != item){
+                while(p != last && p->info != item)
+                {
                     q = p;
                     p = p->next;
                 }
-                if(p->info == item){
+                if(p->info == item)
+                {
                     q->next = p->next;
                     p->next->prev = q;
 
@@ -267,13 +297,15 @@ void DList<T>::deleteItem(T item) {
 }
 
 template <class T>
-DListIterator<T> DList<T>::begin() {
+DListIterator<T> DList<T>::begin()
+{
     DListIterator<T> iterator(first);
     return iterator;
 }
 
 template <class T>
-DListIterator<T> DList<T>::end() {
+DListIterator<T> DList<T>::end()
+{
     DListIterator<T> iterator(last);
     return iterator;
 }
