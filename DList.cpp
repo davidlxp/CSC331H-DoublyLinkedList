@@ -34,7 +34,7 @@ const DList<T>& DList<T>::operator=(const DList<T>& other)
      * @Brief passing by reference, means "other" is an object.
      * so we need to use "&other" to get its address
      */
-    if(this != &other)                              // avoid self-copy
+    if (this != &other)                              // avoid self-copy
     {
         destroy();
         copy(other);
@@ -63,17 +63,17 @@ void DList<T>::destroy()
      * 3. normal walk and destroy
      * */
 
-    if(first != nullptr)                              // if the list is not empty, destroy it node by node
+    if (first != nullptr)                             // if the list is not empty, destroy it node by node
     {
         node<T>* p = nullptr;
-        while(first != nullptr)
+        while (first != nullptr)
         {
             p = first;
             first = first->next;                      // ptr "first" moves to the next node
             p->next = nullptr;                        // remove the access from prev node to current node
             delete p;                                 // free the memory of prev node
 
-            if(first != nullptr)                      // if "first" is NOT NULL, there were more than 1 node in the list
+            if (first != nullptr)                     // if "first" is NOT NULL, there were more than 1 node in the list
                 first->prev = nullptr;                // remove the access from current node to prev node
             else                                      // if "first" is NULL, p pointed to the only node in the list
                 last = nullptr;                       // after removing the only node, set "last" to NULL
@@ -87,12 +87,12 @@ void DList<T>::destroy()
 template <class T>
 const void DList<T>::printList()
 {
-    if(isEmpty())
+    if (isEmpty())
         cout << "\nNothing to print, the list is empty.\n" << endl;
     else
     {
         node<T>* p = first;
-        while(p != nullptr)
+        while (p != nullptr)
         {
             cout << p->info << " ";
             p = p->next;
@@ -104,14 +104,14 @@ const void DList<T>::printList()
 template <class T>
 const bool DList<T>::searchItem(T item)
 {
-    if(isEmpty())
+    if (isEmpty())
         cout << "\nList is empty.\n" << endl;
     else
     {
         node<T>* p = first;
-        while(p != nullptr)                         // unsorted list -> thus, no "p->info <= item" needed
+        while (p != nullptr)                        // unsorted list -> thus, no "p->info <= item" needed
         {
-            if(p->info == item)
+            if (p->info == item)
                 return true;
             p = p->next;
         }
@@ -136,7 +136,7 @@ void DList<T>::copy(const DList<T>& other)
 
     length = other.length;                          // copy the length
 
-    if(other.first == nullptr)                     // if the "other" list is empty
+    if (other.first == nullptr)                     // if the "other" list is empty
     {
         first = nullptr;
     }
@@ -183,7 +183,7 @@ void DList<T>::insertFront(T item)
     first->next = p;
     first->info = item;
 
-    if(p == nullptr)                                // when list was originally empty
+    if (p == nullptr)                               // when list was originally empty
         last = first;
     else                                            // when list originally has at least 1 node
         p->prev = first;
@@ -202,7 +202,7 @@ void DList<T>::insertBack(T item)
     last->next = nullptr;
     last->info = item;
 
-    if(p == nullptr)                                // when list was originally empty
+    if (p == nullptr)                               // when list was originally empty
         first = last;
     else                                            // when list originally has at least 1 node
         p->next = last;
@@ -224,15 +224,15 @@ void DList<T>::deleteItem(T item)
      * 6. didn't find the item
      * */
 
-    if(isEmpty())                            // 1. list is empty
+    if (isEmpty())                                  // 1. list is empty
         cout << "The list is empty.\n" << endl;
     else
     {
         node<T>* p = nullptr;                       // "p" ptr is for walking and deleting
 
-        if(first->next == nullptr)                  // when there's only 1 node in the list
+        if (first->next == nullptr)                 // when there's only 1 node in the list
         {
-            if(first->info != item)
+            if (first->info != item)
                 cout << "Item not found.\n" << endl;
             else                                    // 2. deleting the only node
             {
@@ -245,7 +245,7 @@ void DList<T>::deleteItem(T item)
         }
         else                                        // when list contains multiple nodes
         {
-            if(first->info == item)                 // 3. deleting the 1st node
+            if (first->info == item)                // 3. deleting the 1st node
             {
                 p = first;
                 first = first->next;
@@ -256,7 +256,7 @@ void DList<T>::deleteItem(T item)
 
                 p = nullptr;
             }
-            else if(last->info == item)             // 4. deleting the last node
+            else if (last->info == item)            // 4. deleting the last node
             {
                 p = last;
                 last = last->prev;
@@ -270,11 +270,11 @@ void DList<T>::deleteItem(T item)
             else                                    // 5. walk to find the node to delete
             {
                 p = first->next;
-                while(p != last && p->info != item)
+                while (p != last && p->info != item)
                 {
                     p = p->next;
                 }
-                if(p->info == item)
+                if (p->info == item)
                 {
                     p->prev->next = p->next;
                     p->next->prev = p->prev;
