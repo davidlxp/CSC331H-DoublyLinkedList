@@ -89,7 +89,6 @@ void DList<T>::printList()
         cout << "\nNothing to print, the list is empty.\n" << endl;
     else
     {
-        cout << "\n" << "The List:" << endl;
         node<T>* p = first;
         while(p != nullptr)
         {
@@ -227,8 +226,7 @@ void DList<T>::deleteItem(T item)
         cout << "The list is empty.\n" << endl;
     else
     {
-        node<T>* p = nullptr;                       // "p" ptr is for walking
-        node<T>* q = nullptr;                       // "q" ptr takes care of deleting
+        node<T>* p = nullptr;                       // "p" ptr is for walking and deleting
 
         if(first->next == nullptr)                  // when there's only 1 node in the list
         {
@@ -270,24 +268,22 @@ void DList<T>::deleteItem(T item)
             else                                    // 5. walk to find the node to delete
             {
                 p = first->next;
-                q = first;
                 while(p != last && p->info != item)
                 {
-                    q = p;
                     p = p->next;
                 }
                 if(p->info == item)
                 {
-                    q->next = p->next;
-                    p->next->prev = q;
+                    p->prev->next = p->next;
+                    p->next->prev = p->prev;
 
                     p->next = nullptr;
                     p->prev = nullptr;
+
                     delete p;
                     length--;
 
                     p = nullptr;
-                    q = nullptr;
                 }
                 else
                     cout << "Item not found.\n" << endl;

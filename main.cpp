@@ -33,20 +33,35 @@ void runProgram()
         {
 
             case 1 :
-                insertListFront( l );
-                break;
-
-            case 2 :
-                insertListBack( l );
-                break;
-
-            case 3 :
-                deleteListItem ( l );
-                break;
-
-            case 4 :
+            {
+                insertListFront(l);
+                cout << "\n" << "The list:" << endl;
                 l.printList();
                 break;
+            }
+
+            case 2 :
+            {
+                insertListBack(l);
+                cout << "\n" << "The list:" << endl;
+                l.printList();
+                break;
+            }
+
+            case 3 :
+            {
+                deleteListItem(l);
+                cout << "\n" << "The list:" << endl;
+                l.printList();
+                break;
+            }
+
+            case 4 :
+            {
+                cout << "\n" << "Print the list:" << endl;
+                l.printList();
+                break;
+            }
 
             case 5 :
                 searchListItem ( l );
