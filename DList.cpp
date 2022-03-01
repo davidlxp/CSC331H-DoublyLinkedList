@@ -63,29 +63,31 @@ void DList<T>::destroy()
      * 3. normal walk and destroy
      * */
 
-    if(first != nullptr)
+    if(first != nullptr)                              // if the list is not empty, destroy it node by node
     {
         node<T>* p = nullptr;
-        while(first->next != nullptr)               // when there is more than 1 nodes
+        while(first != nullptr)
         {
             p = first;
-            first = first->next;                    // ptr "first" moves to the next node
-            p->next = nullptr;                      // remove the access from prev node to current node
-            delete p;                               // free the memory of prev node
-            first->prev = nullptr;                  // remove the access from current node to the memory of prev node
+            first = first->next;                      // ptr "first" moves to the next node
+            p->next = nullptr;                        // remove the access from prev node to current node
+            delete p;                                 // free the memory of prev node
+
+            if(first != nullptr)                      // if "first" is NOT NULL, there were more than 1 node in the list
+                first->prev = nullptr;                // remove the access from current node to prev node
+            else                                      // if "first" is NULL, p pointed to the only node in the list
+                last = nullptr;                       // after removing the only node, set "last" to NULL
         }
-        delete last;                                // free the memory of the only node left
-        last = nullptr;                             // set "last" ptr to null
-        first = nullptr;                            // set "first" ptr to null
-        p = nullptr;                                // set "p" ptr to null
         length = 0;
+        p = nullptr;
     }
+
 }
 
 template <class T>
 void DList<T>::printList()
 {
-    if(first == nullptr)
+    if(isEmpty())
         cout << "\nNothing to print, the list is empty.\n" << endl;
     else
     {
@@ -102,7 +104,7 @@ void DList<T>::printList()
 template <class T>
 bool DList<T>::searchItem(T item)
 {
-    if(first == nullptr)
+    if(isEmpty())
         cout << "\nList is empty.\n" << endl;
     else
     {
@@ -222,7 +224,7 @@ void DList<T>::deleteItem(T item)
      * 6. didn't find the item
      * */
 
-    if(first == nullptr)                            // 1. list is empty
+    if(isEmpty())                            // 1. list is empty
         cout << "The list is empty.\n" << endl;
     else
     {
