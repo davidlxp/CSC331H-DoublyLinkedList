@@ -27,7 +27,7 @@ public:
     /**
      * @Brief check whether the list is empty
      */
-    bool isEmpty();
+    const bool isEmpty();
 
     /**
      * @Brief delete one item from the list
@@ -39,12 +39,12 @@ public:
     /**
      * @Brief check whether an item is in the list
      */
-    bool searchItem(T);
+    const bool searchItem(T);
 
     /**
      * @Brief get how many items in a list
      */
-    int getLength();
+    const int getLength();
 
     /**
      * @Brief insert to the front of the double linkedList
@@ -59,7 +59,7 @@ public:
     /**
      * @Brief print a doubly linkedList from front to back
      */
-    void printList();
+    const void printList();
 
     /**
      * @Brief destroy all the nodes in a doubly linkedList
