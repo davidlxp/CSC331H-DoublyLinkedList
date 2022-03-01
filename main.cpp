@@ -75,6 +75,7 @@ void runProgram()
             case 7:
             {
                 DListIterator<int> iteratorF = l.begin();
+                iteratorF.printItem();
                 runIterator(iteratorF);
                 break;
             }
@@ -82,6 +83,7 @@ void runProgram()
             case 8:
             {
                 DListIterator<int> iteratorB = l.end();
+                iteratorB.printItem();
                 runIterator(iteratorB);
                 break;
             }
@@ -206,11 +208,17 @@ void runIterator(DListIterator<int>& iterator){
         switch( choice )
         {
             case 1:
+            {
                 iterator.next();
+                iterator.printItem();
                 break;
+            }
             case 2:
+            {
                 iterator.prev();
+                iterator.printItem();
                 break;
+            }
             case 3:
                 iterator.printItem();
                 break;

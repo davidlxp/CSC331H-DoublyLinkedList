@@ -41,7 +41,6 @@ DListIterator<T>& DListIterator<T>::next()
 {
     if(hasNext())
     {
-        cout << "Moved to next!" << endl;
         current = current->next;
     }
     else
@@ -53,7 +52,6 @@ template <class T>
 DListIterator<T>& DListIterator<T>::prev()
 {
     if(hasPrev()) {
-        cout << "Moved to previous!" << endl;
         current = current->prev;
     }
     else
