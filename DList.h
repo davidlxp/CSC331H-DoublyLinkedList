@@ -18,16 +18,27 @@ private:
     node<T>* first;
     node<T>* last;
     int length;
+
+    /**
+     * @Brief destroy all the nodes in a doubly linkedList
+     */
+    void destroy();
+
+    /**
+     * @Brief make a copy of an list
+     */
+    void copy(const DList<T>& other);
+
 public:
     DList();                                           // Constructor
     ~DList();                                          // Destructor
     DList(const DList<T>& other);                      // Copy Constructor
-    const DList<T>& operator=(const DList<T>& other);  // Overloading Operator "="
+    DList<T>& operator=(const DList<T>& other);  // Overloading Operator "="
 
     /**
      * @Brief check whether the list is empty
      */
-    const bool isEmpty();
+    bool isEmpty() const;
 
     /**
      * @Brief delete one item from the list
@@ -39,12 +50,12 @@ public:
     /**
      * @Brief check whether an item is in the list
      */
-    const bool searchItem(T);
+    bool searchItem(T) const;
 
     /**
      * @Brief get how many items in a list
      */
-    const int getLength();
+    int getLength() const;
 
     /**
      * @Brief insert to the front of the double linkedList
@@ -59,17 +70,7 @@ public:
     /**
      * @Brief print a doubly linkedList from front to back
      */
-    const void printList();
-
-    /**
-     * @Brief destroy all the nodes in a doubly linkedList
-     */
-    void destroy();
-
-    /**
-     * @Brief make a copy of an list
-     */
-    void copy(const DList<T>& other);
+    void printList() const;
 
     /**
      * @Brief return an Iterator points to the 1st node of the list

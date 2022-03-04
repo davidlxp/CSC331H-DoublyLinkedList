@@ -27,7 +27,7 @@ DList<T>::DList(const DList<T>& other)
 }
 
 template <class T>
-const DList<T>& DList<T>::operator=(const DList<T>& other)
+DList<T>& DList<T>::operator=(const DList<T>& other)
 {
 
     /**
@@ -48,7 +48,7 @@ const DList<T>& DList<T>::operator=(const DList<T>& other)
 }
 
 template<class T>
-const bool DList<T>::isEmpty()
+bool DList<T>::isEmpty() const
 {
     return first == nullptr;
 }
@@ -82,7 +82,7 @@ void DList<T>::destroy()
 }
 
 template <class T>
-const void DList<T>::printList()
+void DList<T>::printList() const
 {
     if (isEmpty())
         cout << "\nNothing to print, the list is empty.\n" << endl;
@@ -99,7 +99,7 @@ const void DList<T>::printList()
 }
 
 template <class T>
-const bool DList<T>::searchItem(T item)
+bool DList<T>::searchItem(T item) const
 {
     if (isEmpty())
         cout << "\nList is empty.\n" << endl;
@@ -117,7 +117,7 @@ const bool DList<T>::searchItem(T item)
 }
 
 template <class T>
-const int DList<T>::getLength()
+int DList<T>::getLength() const
 {
     return length;
 }

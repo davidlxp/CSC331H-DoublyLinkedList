@@ -99,7 +99,6 @@ void runProgram()
     DList<int> l2;
     l2.insertFront(4);
     l2.insertBack(5);
-
     l2 = l;
 
     cout<<"\nPrinting a new list with the same values as the old list \n";
