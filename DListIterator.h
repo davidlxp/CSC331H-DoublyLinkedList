@@ -25,6 +25,12 @@ public:
     DListIterator(node<T>* ptr);
 
     /**
+     * @Brief the destructor, we will set pointer "current"
+     * to nullptr in it
+     */
+    ~DListIterator();
+
+    /**
      * @Brief check whether the node, which Iterator
      * points to, has a next node or not
      */

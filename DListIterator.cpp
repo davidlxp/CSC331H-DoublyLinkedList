@@ -19,6 +19,12 @@ DListIterator<T>::DListIterator(node<T>* ptr)
 }
 
 template <class T>
+DListIterator<T>::~DListIterator<T>()
+{
+    current = nullptr;
+}
+
+template <class T>
 bool DListIterator<T>::hasNext()
 {
     bool res = true;
