@@ -35,7 +35,7 @@ void runProgram()
             case 1 :
             {
                 insertListFront(l);
-                cout << "\n" << "The list:" << endl;
+                cout << "\n" << "Current list:" << endl;
                 l.printList();
                 break;
             }
@@ -43,7 +43,7 @@ void runProgram()
             case 2 :
             {
                 insertListBack(l);
-                cout << "\n" << "The list:" << endl;
+                cout << "\n" << "Current list:" << endl;
                 l.printList();
                 break;
             }
@@ -51,7 +51,7 @@ void runProgram()
             case 3 :
             {
                 deleteListItem(l);
-                cout << "\n" << "The list:" << endl;
+                cout << "\n" << "Current list:" << endl;
                 l.printList();
                 break;
             }

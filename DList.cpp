@@ -63,24 +63,21 @@ void DList<T>::destroy()
      * 3. normal walk and destroy
      * */
 
-    if (first != nullptr)                             // if the list is not empty, destroy it node by node
+    node<T>* p = nullptr;
+    while (first != nullptr)
     {
-        node<T>* p = nullptr;
-        while (first != nullptr)
-        {
-            p = first;
-            first = first->next;                      // ptr "first" moves to the next node
-            p->next = nullptr;                        // remove the access from prev node to current node
-            delete p;                                 // free the memory of prev node
+        p = first;
+        first = first->next;                       // ptr "first" moves to the next node
+        p->next = nullptr;                         // remove the access from prev node to current node
+        delete p;                                  // free the memory of prev node
 
-            if (first != nullptr)                     // if "first" is NOT NULL, there were more than 1 node in the list
-                first->prev = nullptr;                // remove the access from current node to prev node
-            else                                      // if "first" is NULL, p pointed to the only node in the list
-                last = nullptr;                       // after removing the only node, set "last" to NULL
-        }
-        length = 0;
-        p = nullptr;
+        if (first != nullptr)                      // if "first" is NOT NULL, there were more than 1 node in the list
+            first->prev = nullptr;                 // remove the access from current node to prev node
+        else                                       // if "first" is NULL, p pointed to the only node in the list
+            last = nullptr;                        // after removing the only node, set "last" to NULL
     }
+    length = 0;
+    p = nullptr;
 
 }
 
@@ -138,7 +135,7 @@ void DList<T>::copy(const DList<T>& other)
 
     if (other.first == nullptr)                     // if the "other" list is empty
     {
-        first = nullptr;
+        first = last = nullptr;
     }
     else
     {
