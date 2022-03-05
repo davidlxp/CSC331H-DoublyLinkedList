@@ -1,7 +1,7 @@
 /***************************************************************/
 /* Programmer: Xinpeng Liu                                     */
 /* Date: February 22, 2022                                     */
-/* Purpose:  doubly linked list class                          */
+/* Purpose: an unsorted doubly linked list class               */
 /***************************************************************/
 
 #ifndef DOUBLYLINKEDLIST_DLIST_H
@@ -13,19 +13,27 @@
 using namespace std;
 
 template <class T>
-class DList {
+class DList{
 private:
-    node<T>* first;
-    node<T>* last;
-    int length;
+    node<T>* first;     // a pointer points to the 1st node of the list
+    node<T>* last;      // a pointer points to the last node of the list
+    int length;         // indicates how many items are there in the list
 
     /**
      * @Brief destroy all the nodes in a doubly linkedList
+     * and set the "first" and "last" pointer to nullptr,
+     * also set the "length" variable to 0
      */
     void destroy();
 
     /**
      * @Brief make a copy of an list
+     * @Input the reference of another LinkedList object which you
+     * want to copy information from
+     * @Detail copying info from another LinkedList to the current
+     * LinkedList node-by-node.
+     * @Requirment The current LinkedList has to be
+     * empty to use this copy() function
      */
     void copy(const DList<T>& other);
 
@@ -33,37 +41,50 @@ public:
     DList();                                           // Constructor
     ~DList();                                          // Destructor
     DList(const DList<T>& other);                      // Copy Constructor
-    DList<T>& operator=(const DList<T>& other);  // Overloading Operator "="
+    DList<T>& operator=(const DList<T>& other);        // Overloading Operator "="
 
     /**
      * @Brief check whether the list is empty
+     * @Detail the function will check if pointer "first"
+     * equals to nullptr
+     * @Output if the LinkedList is empty, the function will
+     * give TRUE. Otherwise, it will give FALSE
      */
     bool isEmpty() const;
 
     /**
-     * @Brief delete one item from the list
-     * if an item has multiple appearances in the list
-     * we only delete the first one
+     * @Brief delete one item from the list.
+     * @Detail If an item has multiple appearances in the list,
+     * only delete the first one.
+     * @Input an value which user want to delete will be
+     * passed into the function as parameter
      */
     void deleteItem(T);
 
     /**
      * @Brief check whether an item is in the list
+     * @Input an item which user want to search for will be
+     * passed into the function as parameter
+     * @Output If the item found in the List, the function
+     * will return TRUE. Otherwise, it returns FALSE
      */
     bool searchItem(T) const;
 
     /**
      * @Brief get how many items in a list
+     * @Output return the value of member variable "length"
      */
     int getLength() const;
 
     /**
      * @Brief insert to the front of the double linkedList
+     * @Input an value which user want to insert into the list
      */
     void insertFront(T);
 
     /**
      * @Brief insert to the back of the double linkedList
+     * @Input an value which user want to insert into the list
      */
     void insertBack(T);
 

@@ -1,13 +1,40 @@
+/**
+ * Programmer: Xinpeng Liu
+ * Date: 2022-02-22
+ * Purpose: Test DoublyLinkedList class using a menu driven program
+ * Input: User choice of operations
+ * Output: Menu of choices and results of operations
+ *
+ */
+
 #include <iostream>
 #include "DList.cpp"
 
+// runProgram runs the menu-driven program to allow user test
+// the doubly LinkedList and its iterator
 void runProgram();
+
+// printMenu displays a menus of choices and returns the user's selection
 int printMenu ();
+
+// insertListFront inserts an item of user's choice into the front of list
 void insertListFront ( DList<int> &l );
+
+// insertListBack inserts an item of user's choice into the back of list
 void insertListBack ( DList<int> &l );
+
+// deleteListItem accepts user input and deletes the requested item from the list
 void deleteListItem ( DList<int> &l );
+
+// searchItem accepts user input and searches the list for the item
 void searchListItem ( DList<int> l );
 
+// iterateMenu displays a menus of choices which are the action an iterator can take.
+// The function returns the user's selection
+int iterateMenu();
+
+// runIterator allows user to use an iterator to traverse an LinkedList
+// Input: reference of an iterator which points to a node of list
 void runIterator(DListIterator<int>& iterator);
 
 int main()
@@ -75,7 +102,6 @@ void runProgram()
             case 7:
             {
                 DListIterator<int> iteratorF = l.begin();
-                iteratorF.printItem();
                 runIterator(iteratorF);
                 break;
             }
@@ -83,7 +109,6 @@ void runProgram()
             case 8:
             {
                 DListIterator<int> iteratorB = l.end();
-                iteratorB.printItem();
                 runIterator(iteratorB);
                 break;
             }
@@ -199,27 +224,46 @@ int iterateMenu(){
 }
 
 void runIterator(DListIterator<int>& iterator){
-    int choice;
 
+    // print the initial value of node which iterator on
+    if(!iterator.isNull())
+        iterator.printItem();
+
+    // get choice from user
+    int choice;
     choice = iterateMenu();
+
     while ( choice != 4 )
     {
         switch( choice )
         {
             case 1:
             {
-                iterator.next();
-                iterator.printItem();
+                if(iterator.hasNext())
+                {
+                    iterator.next();
+                    iterator.printItem();
+                }
+                else
+                    cout << "Can NOT move to next, list is empty or iterator has reached the end of the list\n" << endl;
                 break;
             }
             case 2:
             {
-                iterator.prev();
-                iterator.printItem();
+                if(iterator.hasPrev())
+                {
+                    iterator.prev();
+                    iterator.printItem();
+                }
+                else
+                    cout << "Can NOT move to previous, list is empty or iterator has reached the begin of the list\n" << endl;
                 break;
             }
             case 3:
-                iterator.printItem();
+                if(!iterator.isNull())
+                    iterator.printItem();
+                else
+                    cout << "Nothing to print, the iterator is NULL, because the list is empty.\n" << endl;
                 break;
         }
         choice = iterateMenu();

@@ -1,8 +1,8 @@
-/***************************************************************/
-/* Programmer: Xinpeng Liu                                     */
-/* Date: February 22, 2022                                     */
-/* Purpose:  implementation of doubly linked list class        */
-/***************************************************************/
+/****************************************************************************/
+/* Programmer: Xinpeng Liu                                                  */
+/* Date: February 22, 2022                                                  */
+/* Purpose:  implementation of an unsorted doubly linked list class         */
+/****************************************************************************/
 
 #include "DList.h"
 
@@ -64,9 +64,9 @@ void DList<T>::destroy()
      * */
 
     node<T>* p = nullptr;
-    while (first != nullptr)
+    while (first != nullptr)                       // we use "first" pointer to walk, so while "first != nullptr"
     {
-        p = first;
+        p = first;                                 // we use "p" pointer to delete node
         first = first->next;                       // ptr "first" moves to the next node
         p->next = nullptr;                         // remove the access from prev node to current node
         delete p;                                  // free the memory of prev node
@@ -85,7 +85,7 @@ template <class T>
 void DList<T>::printList() const
 {
     if (isEmpty())
-        cout << "\nNothing to print, the list is empty.\n" << endl;
+        cout << "" << endl;
     else
     {
         node<T>* p = first;
@@ -137,28 +137,27 @@ void DList<T>::copy(const DList<T>& other)
     {
         first = last = nullptr;
     }
-    else
+    else                                            // when the "other" list is not empty
     {
-        first = new node<T>;
+        first = new node<T>;                        // the following 4 lines copy the first node from other
         first->prev = nullptr;
         first->next = nullptr;
         first->info = other.first->info;
 
-        node<T> *p = other.first->next;
-        node<T> *q = first;
-        while (p != nullptr)
+        last = first;                               // let last node equals to first
+
+        node<T> *p = other.first->next;             // let "p" points to 1st node of "other"
+        while (p != nullptr)                        // when pointer "p" still points to a node of "other" list
         {
-            q->next = new node<T>;                  // create the next node
+            last->next = new node<T>;               // create the next node
 
-            q->next->info = p->info;                // copy "info" to the next node
-            q->next->prev = q;                      // build access from "next node" to "current node"
-            q->next->next = nullptr;                // set "next" ptr of the "next node" to be null
+            last->next->info = p->info;             // copy "info" to the next node
+            last->next->prev = last;                // build access from "next node" to "current node"
+            last->next->next = nullptr;             // set "next" ptr of the "next node" to be null
 
-            q = q->next;                            // move the ptr "q" to the next node
+            last = last->next;                      // move the ptr "last" to the next node
             p = p->next;                            // move the ptr "p" to the next node
         }
-        last = q;                                   // set the "last" ptr
-        q = nullptr;                                // set "q" ptr to null
         p = nullptr;                                // set "p" ptr to null
     }
 }
@@ -175,7 +174,7 @@ void DList<T>::insertFront(T item)
 
     node<T>* p = first;
 
-    first = new node<T>;
+    first = new node<T>;                            // pointer "first" generates a new node
     first->prev = nullptr;
     first->next = p;
     first->info = item;
@@ -194,7 +193,7 @@ void DList<T>::insertBack(T item)
 {
     node<T>* p = last;
 
-    last = new node<T>;
+    last = new node<T>;                             // pointer "last" generates a new node
     last->prev = p;
     last->next = nullptr;
     last->info = item;

@@ -24,11 +24,17 @@ DListIterator<T>::~DListIterator<T>()
     current = nullptr;
 }
 
+template<class T>
+bool DListIterator<T>::isNull()
+{
+    return (current == nullptr);
+}
+
 template <class T>
 bool DListIterator<T>::hasNext()
 {
     bool res = true;
-    if(current == nullptr || current->next == nullptr)
+    if (isNull() || current->next == nullptr)
         res = false;
     return res;
 }
@@ -37,7 +43,7 @@ template <class T>
 bool DListIterator<T>::hasPrev()
 {
     bool res = true;
-    if(current == nullptr || current->prev == nullptr)
+    if (isNull() || current->prev == nullptr)
         res = false;
     return res;
 }
@@ -45,41 +51,41 @@ bool DListIterator<T>::hasPrev()
 template <class T>
 DListIterator<T>& DListIterator<T>::next()
 {
-    if(hasNext())
-    {
-        current = current->next;
-    }
-    else
-        cout << "Can NOT move to next, list is empty or iterator has reached the end of the list\n" << endl;
+    // pre-validate if the "current" pointer is nullptr or not
+    assert (!isNull());
+    current = current->next;
     return *this;
 }
 
 template <class T>
 DListIterator<T>& DListIterator<T>::prev()
 {
-    if(hasPrev()) {
-        current = current->prev;
-    }
-    else
-        cout << "Can NOT move to previous, list is empty or iterator has reached the begin of the list\n" << endl;
+    // pre-validate if the "current" pointer is nullptr or not
+    assert (!isNull());
+    current = current->prev;
     return *this;
+}
+
+template <class T>
+T DListIterator<T>::getItem()
+{
+    // pre-validate if the "current" pointer is nullptr or not
+    assert (!isNull());
+    return current->info;
 }
 
 template <class T>
 void DListIterator<T>::printItem()
 {
-    if(current != nullptr)
-        cout << "Item: "
-            << current->info << endl;
-    else
-        cout << "Nothing to print, the list is empty.\n" << endl;
+    // pre-validate if the "current" pointer is nullptr or not
+    assert (!isNull());
+    cout << "Item: " << getItem() << endl;
 }
 
 template <class T>
 T DListIterator<T>::operator*()
 {
-    if(current != nullptr)
-        return current->info;
+    return getItem();
 }
 
 template <class T>
