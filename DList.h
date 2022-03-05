@@ -41,7 +41,18 @@ public:
     DList();                                           // Constructor
     ~DList();                                          // Destructor
     DList(const DList<T>& other);                      // Copy Constructor
-    DList<T>& operator=(const DList<T>& other);        // Overloading Operator "="
+
+    /**
+     * @Brief overloading the operator=
+     * @Detail it enables copying the value from another list to
+     * overwrite the current list who calls this function. This function
+     * will firstly destroy() the current list, then implement copy().
+     * @Input a reference of another instantiated LinkedList object, and
+     * const means this object can't be modified within this function
+     * @Output a reference of the current LinkedList object. This return
+     * value will enable cascade equal between multiple LinkedList objects
+     */
+    DList<T>& operator=(const DList<T>& other);
 
     /**
      * @Brief check whether the list is empty
