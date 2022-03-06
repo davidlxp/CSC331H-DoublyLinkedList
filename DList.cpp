@@ -47,7 +47,7 @@ DList<T>& DList<T>::operator=(const DList<T>& other)
     return *this;
 }
 
-template<class T>
+template <class T>
 bool DList<T>::isEmpty() const
 {
     return first == nullptr;
@@ -101,6 +101,8 @@ void DList<T>::printList() const
 template <class T>
 bool DList<T>::searchItem(T item) const
 {
+    bool res = false;                               // by default return false
+
     if (isEmpty())
         cout << "\nList is empty.\n" << endl;
     else
@@ -109,11 +111,15 @@ bool DList<T>::searchItem(T item) const
         while (p != nullptr)                        // unsorted list -> thus, no "p->info <= item" needed
         {
             if (p->info == item)
-                return true;
+            {
+                res = true;
+                break;
+            }
             p = p->next;
         }
-        return false;
     }
+
+    return res;
 }
 
 template <class T>
