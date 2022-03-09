@@ -8,6 +8,7 @@
 #define DOUBLYLINKEDLIST_DLISTITERATOR_H
 
 #include <iostream>
+#include <cassert>
 using namespace std;
 #include "node.h"
 
