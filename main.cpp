@@ -4,6 +4,9 @@
  * Purpose: Test DoublyLinkedList class using a menu driven program
  * Input: User choice of operations
  * Output: Menu of choices and results of operations
+ * Warning: In the test below, we initialized a doubly LinkedList of
+ * integers, so it only allow operations on integers. For example, you
+ * can only insert integer to the list.
  *
  */
 
@@ -155,15 +158,9 @@ void insertListFront ( DList<int> &l )
     int num;
 
     cout<<"\nEnter the number to insert : ";
-    cin>>num;
-
-    if(num)
-    {
-        l.insertFront(num);
-        cout << "\nThe number has been inserted\n\n";
-    }
-    else
-        cout << "\nFailed! Please provide a valid Integer to insert\n\n";
+    cin >> num;
+    l.insertFront(num);
+    cout << "\nThe number has been inserted\n\n";
 }
 
 void insertListBack ( DList<int> &l )
@@ -172,14 +169,8 @@ void insertListBack ( DList<int> &l )
 
     cout<<"\nEnter the number to insert : ";
     cin>>num;
-
-    if(num)
-    {
-        l.insertBack(num);
-        cout << "\nThe number has been inserted\n\n";
-    }
-    else
-        cout << "\nFailed! Please provide a valid Integer to insert\n\n";
+    l.insertBack(num);
+    cout << "\nThe number has been inserted\n\n";
 }
 
 void deleteListItem ( DList<int> &l )
